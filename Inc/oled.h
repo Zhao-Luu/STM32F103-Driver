@@ -3,38 +3,30 @@
 
 #include "stm32f10x.h"
 
-/* OLED屏幕分辨率 */
-#define OLED_WIDTH   128
-#define OLED_HEIGHT  64
-
-/* OLED显示缓存 */
+/* OLED display buffer (128x64 = 1024 bytes) */
 extern u8 OLED_DisplayBuf[8][128];
 
-/* OLED初始化 */
+/* Basic functions */
 void OLED_Init(void);
-
-/* OLED基础操作 */
-void OLED_WriteCmd(u8 cmd);
-void OLED_WriteData(u8 data);
-void OLED_SetPos(u8 x, u8 y);
 void OLED_Clear(void);
 void OLED_Refresh(void);
+void OLED_SetPos(u8 x, u8 y);
 
-/* OLED显示函数 */
+/* Display functions */
 void OLED_ShowChar(u8 x, u8 y, u8 chr);
 void OLED_ShowString(u8 x, u8 y, u8 *str);
 void OLED_ShowNum(u8 x, u8 y, u32 num, u8 len);
 void OLED_ShowHexNum(u8 x, u8 y, u32 num, u8 len);
 void OLED_ShowBinary(u8 x, u8 y, u32 num, u8 len);
 
-/* OLED图形操作 */
+/* Graphics functions */
 void OLED_DrawPixel(u8 x, u8 y);
 void OLED_DrawLine(u8 x1, u8 y1, u8 x2, u8 y2);
 void OLED_DrawRectangle(u8 x1, u8 y1, u8 x2, u8 y2);
 void OLED_FillRectangle(u8 x1, u8 y1, u8 x2, u8 y2);
 void OLED_DrawCircle(u8 x, u8 y, u8 r);
 
-/* OLED高级操作 */
+/* Control functions */
 void OLED_DisplayOn(void);
 void OLED_DisplayOff(void);
 void OLED_SetContrast(u8 contrast);

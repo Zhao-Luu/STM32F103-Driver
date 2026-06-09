@@ -3,43 +3,41 @@
 
 #include "stm32f10x.h"
 
-/* ADC采样通道 */
-#define ADC_CHANNEL_0    0    /* PA0 */
-#define ADC_CHANNEL_1    1    /* PA1 */
-#define ADC_CHANNEL_2    2    /* PA2 */
-#define ADC_CHANNEL_3    3    /* PA3 */
-#define ADC_CHANNEL_4    4    /* PA4 */
-#define ADC_CHANNEL_5    5    /* PA5 */
-#define ADC_CHANNEL_6    6    /* PA6 */
-#define ADC_CHANNEL_7    7    /* PA7 */
-#define ADC_CHANNEL_8    8    /* PB0 */
-#define ADC_CHANNEL_9    9    /* PB1 */
-#define ADC_CHANNEL_10   10   /* PC0 */
-#define ADC_CHANNEL_11   11   /* PC1 */
-#define ADC_CHANNEL_12   12   /* PC2 */
-#define ADC_CHANNEL_13   13   /* PC3 */
-#define ADC_CHANNEL_14   14   /* PC4 */
-#define ADC_CHANNEL_15   15   /* PC5 */
-#define ADC_CHANNEL_16   16   /* 内部温度传感器 */
-#define ADC_CHANNEL_17   17   /* Vrefint参考电压 */
+/* ADC channel definitions */
+#define ADC_CHANNEL_0   0
+#define ADC_CHANNEL_1   1
+#define ADC_CHANNEL_2   2
+#define ADC_CHANNEL_3   3
+#define ADC_CHANNEL_4   4
+#define ADC_CHANNEL_5   5
+#define ADC_CHANNEL_6   6
+#define ADC_CHANNEL_7   7
+#define ADC_CHANNEL_8   8
+#define ADC_CHANNEL_9   9   /* PB1 - Grayscale sensor */
+#define ADC_CHANNEL_10  10
+#define ADC_CHANNEL_11  11
+#define ADC_CHANNEL_12  12
+#define ADC_CHANNEL_13  13
+#define ADC_CHANNEL_14  14
+#define ADC_CHANNEL_15  15
+#define ADC_CHANNEL_16  16  /* Internal temperature sensor */
+#define ADC_CHANNEL_17  17  /* Internal Vrefint */
 
-/* ADC初始化 */
+/* ADC initialization */
 void ADC_Init(void);
 
-/* 单通道采集 */
+/* Get ADC value from specified channel (0-4095) */
 u16 ADC_GetValue(u8 channel);
 
-/* 多通道采集 */
+/* Get average ADC value */
 u16 ADC_GetValue_DMA(u8 channel, u16 times);
 
-/* 灰度传感器采集 (通道9) */
-u16 ADC_GetGrayValue(void);
-u16 ADC_GetGrayValue_Avg(u8 times);
+/* Grayscale sensor functions */
+u16 ADC_GetGrayValue(void);          /* Single sample */
+u16 ADC_GetGrayValue_Avg(u8 times); /* Average of multiple samples */
 
-/* 温度传感器采集 */
+/* Temperature and Vref functions */
 float ADC_GetTemperature(void);
-
-/* 参考电压采集 */
 u16 ADC_GetVrefint(void);
 
 #endif /* __ADC_H */
